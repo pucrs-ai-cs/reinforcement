@@ -25,7 +25,7 @@ python -B environment.py [filename.map]
 
 ### Report
 
-You must deliver a 2-page report of your work, in the [AAAI conference format] (http://www.aaai.org/Publications/Templates/AuthorKit.zip)  containing:
+You must deliver a 2-page report of your work, in the [AAAI conference format] (http://www.aaai.org/Publications/Templates/AuthorKit.zip), containing:
  - An introduction;
  - One section describing the algorithm you chose and how you implemented it;
  - One experimentation section; and
