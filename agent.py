@@ -74,7 +74,7 @@ class Agent:
         """
         Return an action and the learned reward by maximizing reward.
         """
-        return argmax(ACTIONS, lambda action: self.exploration_function(state, action))
+        return argmax(ACTIONS, lambda action: self.q_value(state, action))
 
     def convergence_metric(self):
         """
@@ -84,7 +84,7 @@ class Agent:
         curr = sum(self.utility_table.values())
         return math.sqrt(abs(curr - prev))
 
-    def exploration_function(self, state, action):
+    def q_value(self, state, action):
         return 0
 
     def update_utility(self):

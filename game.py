@@ -141,7 +141,7 @@ class Game:
 
                     for t in triangs:
                         act, poly = t
-                        v = self.agt.exploration_function((x,y), act)
+                        v = self.agt.q_value((x,y), act)
                         c = self.scale_range(v, self.min_expl, self.max_expl, 0, 255)
                         pygame.draw.polygon(background, (c,c,c), poly, 0)
 
@@ -240,7 +240,7 @@ class Game:
         for x in range(self.env.map_width):
             for y in range(self.env.map_height):
                 for a in ACTIONS:
-                    v = self.agt.exploration_function((x,y), a)
+                    v = self.agt.q_value((x,y), a)
                     self.min_expl = min(self.min_expl, v)
                     self.max_expl = max(self.max_expl, v)
 
