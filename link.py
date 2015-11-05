@@ -21,7 +21,7 @@ class Link(Agent):
         """
         raise NotImplementedError
 
-    def exploration_function(self, state, action):
+    def q_value(self, state, action):
         """
         Return the utility for an action and/or action.
 
