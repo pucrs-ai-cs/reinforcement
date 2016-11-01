@@ -9,7 +9,6 @@ from environment import *
 class Game:
 
     def __init__(self, env, agt):
-
         self.env = env
         self.agt = agt
 
@@ -117,7 +116,6 @@ class Game:
         for x in xrange(self.env.map_width):
             for y in xrange(self.env.map_height):
                 tile = self.env.map_data[x][y]
-
                 if not DEBUG():
                     if tile == TILE_BLUE_RUPEE:
                         background.blit(self.tileset[0][TILE_CLEAR], (TILE_WIDTH * x, TILE_HEIGHT * y))
@@ -132,18 +130,26 @@ class Game:
                 if tile not in VALID:
                     pygame.draw.rect(background, (0, 0, 0), [TILE_WIDTH * x, TILE_HEIGHT * y, TILE_WIDTH, TILE_HEIGHT], 0)
                 else:
-                    triangs = [
-                        ( MOVE_UP, [[x0, y0], [x1, y0], [xh, yh]] ),
-                        ( MOVE_DOWN, [[x0, y1], [x1, y1], [xh, yh]] ),
-                        ( MOVE_LEFT, [[x0, y0], [x0, y1], [xh, yh]] ),
-                        ( MOVE_RIGHT, [[x1, y0], [x1, y1], [xh, yh]] ),
-                    ]
+                    pass                    
+                    #triangs = [
+                    #    ( MOVE_LEFT, [[x0, y0], [x0, y1], [xh, yh]] ),
+                    #    ( MOVE_RIGHT, [[x1, y0], [x1, y1], [xh, yh]] ),
+                    #    ( MOVE_DOWN, [[x0, y1], [x1, y1], [xh, yh]] ),
+                    #    ( MOVE_UP, [[x0, y0], [x1, y0], [xh, yh]] ),
+                    #]
+                    #action = self.agt.argmaxAPrime((x,y))
+                    #act, poly = triangs[action]
+                    #c = 120
+                    #pygame.draw.polygon(background, (c,c,c), poly, 0)
 
-                    for t in triangs:
-                        act, poly = t
-                        v = self.agt.q_value((x,y), act)
-                        c = self.scale_range(v, self.min_expl, self.max_expl, 0, 255)
-                        pygame.draw.polygon(background, (c,c,c), poly, 0)
+
+                    #for t in triangs:
+                        #act, poly = t
+                        #v = self.agt.return_qvalue(QValue((x,y), act))
+                        #c = self.scale_range(v, 1, self.max_expl, 0, 255)
+                        #print 'C: ', c
+                        #c = 120
+                        #pygame.draw.polygon(background, (c,c,c), poly, 0)
 
         return background
 
@@ -314,10 +320,7 @@ if __name__ == "__main__":
     start_time = time.time()
     agt.train(env)
     elapsed_time = time.time() - start_time
-
-    env.reset()
-    agt.reset(env)
-
     logger.info("It took %.2f seconds to train.", elapsed_time)
-
     Game(env, agt)
+
+
