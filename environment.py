@@ -30,7 +30,6 @@ class Environment:
         """
         Execute an agent's action and compute current state
         """
-            
         # If the agent is in a state with a ruppe, it turns into a TILE_CLEAR
         if self.map_data[self.state[0]][self.state[1]] == TILE_BLUE_RUPEE:
             self.rupees.append(self.state)
@@ -106,7 +105,7 @@ class Environment:
 
     def terminal(self, state):
         """
-        Return list of available actions at state
+        Return True if the state is terminal
         """
         return self.map_data[state[0]][state[1]] in TERMINAL
 
@@ -131,13 +130,6 @@ class Environment:
         for a in ACTIONS:
             yield a
 
-    def deterministic(self):
-        HIGH_PROB = 1.0
-        LOW_PROB = 0.0
-
-    def probabilistic(self):
-        HIGH_PROB = 0.7
-        LOW_PROB = 0.15
 
 if __name__ == "__main__":
 
@@ -147,7 +139,7 @@ if __name__ == "__main__":
     parser.add_argument('map', nargs='?', default=DEFAULT_MAP)
     parser.add_argument('--debug', action='store_true')
     args = parser.parse_args()
-
+    
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)
     else:
@@ -165,5 +157,4 @@ if __name__ == "__main__":
     start_time = time.time()
     agt.train(env)
     elapsed_time = time.time() - start_time
-
     logger.info("It took %.2f seconds to train.", elapsed_time)

@@ -10,7 +10,7 @@ LOW_PROB    = 0.15
 DEBUG       = lambda: logging.getLogger().level == logging.DEBUG
 IS_DEBUG    = DEBUG()
 
-MAX_TRAINING_EPISODES = 1500
+MAX_TRAINING_EPISODES = 10000
 CONVERGENCE_THRESHOLD = 0.1
 
 # Frames per second (more means faster)
@@ -44,10 +44,11 @@ MOVE_RIGHT  = 0
 MOVE_LEFT   = 1
 MOVE_UP     = 2
 MOVE_DOWN   = 3
+NO_OP   = 4
 
 # Pixels per frame, must match tile size (TILE_WIDTH % MOVE_SPEED == 0 and TILE_HEIGHT % MOVE_SPEED == 0)
 MOVE_SPEED  = 4 * ZOOM
 
 # Available actions
 ACTIONS = [MOVE_RIGHT, MOVE_LEFT, MOVE_UP, MOVE_DOWN]
-ACTIONS_NAMES = ['RIGHT', 'LEFT', 'UP', 'DOWN']
+ACTIONS_NAMES = ['RIGHT', 'LEFT', 'UP', 'DOWN', 'NO_OP']
