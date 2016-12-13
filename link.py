@@ -5,8 +5,7 @@ import qvalue
 from qvalue import *
 from common import *
 from util import *
-from agent import *
-from state import *
+
 
 class Link(Agent):
 
@@ -35,9 +34,9 @@ class Link(Agent):
         self.env = env
         executions = 0
         while executions < MAX_TRAINING_EPISODES:
-            action = self.run_train(self.state)
+            action = self.run_train(self.env)
             self.env.execute(action)
-            if env.terminal(env.state):
+            if env.terminal(self.state):
                 executions += 1
                 
                 self.reset(env)
