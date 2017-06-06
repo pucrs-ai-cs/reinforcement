@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # Four spaces as indentation [no tabs]
 import math, copy, random, logging
-import qvalue
-from qvalue import *
+# import qvalue
+# from qvalue import *
 from common import *
 from util import *
-
+from agent import *
 
 class Link(Agent):
 
